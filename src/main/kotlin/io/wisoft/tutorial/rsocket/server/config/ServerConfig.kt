@@ -8,4 +8,9 @@ import org.springframework.web.util.pattern.PathPatternRouteMatcher
 @Configuration
 class ServerConfig {
 
+//    @Bean
+//    fun rsocketMessageHandler() = RSocketMessageHandler().apply {
+//        routeMatcher = PathPatternRouteMatcher()
+//    }
+//
 }
