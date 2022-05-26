@@ -7,20 +7,10 @@ import org.springframework.stereotype.Controller
 
 @Controller
 @MessageMapping("")
-class RSocketRouter {
-
-//    @MessageMapping("")
-//    fun requestResponse(request: Message): Message? {
-//        println("Received request-response request: $request")
-//        return Message("SERVER", "RESPONSE")
-//    }
+class RSocketRouter(val repository: SensingDataRepository) {
 
     @MessageMapping("")
-    suspend fun requestStream(request: Message): Flow<Message> =
-        flow {
-            for (i in 1..10) {
-                emit(Message("Server", "Response-$i"))
-            }
-        }
+    suspend fun getLatestStream(n: Int): Flow<SensingData> =
+        repository.getLatest(n)
 
 }
